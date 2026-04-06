@@ -29,6 +29,8 @@ export default function render(page: any) {
         .use(plugin)
         .use(head)
         .use(ui)
+
+      // TODO: register splash screen (ssr)
     },
   }).then(async (app) => {
     const payload = await renderSSRHead(head)
