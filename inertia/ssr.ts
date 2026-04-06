@@ -1,10 +1,11 @@
-import { client } from '~/client'
-import Layout from '~/layouts/default.vue'
-import { createInertiaApp } from '@inertiajs/vue3'
+import { resolvePageComponent } from '@adonisjs/inertia/helpers'
 import { TuyauProvider } from '@adonisjs/inertia/vue'
+import { createInertiaApp } from '@inertiajs/vue3'
+import ui from '@nuxt/ui/vue-plugin'
 import { renderToString } from '@vue/server-renderer'
 import { createSSRApp, h, type DefineComponent } from 'vue'
-import { resolvePageComponent } from '@adonisjs/inertia/helpers'
+import { client } from '~/client'
+import Layout from '~/layouts/default.vue'
 
 export default function render(page: any) {
   return createInertiaApp({
@@ -20,7 +21,9 @@ export default function render(page: any) {
     setup: ({ App, props, plugin }) => {
       return createSSRApp({
         render: () => h(TuyauProvider, { client }, { default: () => h(App, props) }),
-      }).use(plugin)
+      })
+        .use(plugin)
+        .use(ui)
     },
   })
 }

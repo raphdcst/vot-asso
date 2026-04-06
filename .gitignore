@@ -4,6 +4,10 @@ build
 tmp/*
 !tmp/.gitkeep
 
+# nuxt-ui
+auto-imports.d.ts
+components.d.ts
+
 # Secrets
 .env
 .env.local
