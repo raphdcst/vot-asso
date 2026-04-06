@@ -1,7 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+
+</script>
 
 <template>
-  <div>
-    <h1>Page not found</h1>
-  </div>
+  <UPageHero title="404" description="Page introuvable."
+    :links="[{ icon: 'i-lucide-arrow-right', label: 'Revenir à l\'accueil', to: '/', variant: 'soft', }]" />
 </template>
