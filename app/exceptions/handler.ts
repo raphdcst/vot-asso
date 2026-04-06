@@ -1,5 +1,5 @@
-import app from '@adonisjs/core/services/app'
 import { type HttpContext, ExceptionHandler } from '@adonisjs/core/http'
+import app from '@adonisjs/core/services/app'
 import type { StatusPageRange, StatusPageRenderer } from '@adonisjs/core/types/http'
 
 export default class HttpExceptionHandler extends ExceptionHandler {
@@ -14,7 +14,10 @@ export default class HttpExceptionHandler extends ExceptionHandler {
    * codes. You might want to enable them in production only, but feel
    * free to enable them in development as well.
    */
-  protected renderStatusPages = app.inProduction
+
+  // TODO: uncomment this line
+  // protected renderStatusPages = app.inProduction
+  protected renderStatusPages = true
 
   /**
    * Status pages is a collection of error code range and a callback
