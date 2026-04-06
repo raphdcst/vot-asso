@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title inertia>
-      AdonisJS
-    </title>
 
-    @vite(['inertia/app.ts'])
-    @inertiaHead()
-    @stack('dumper')
-    <script>
-      const theme = localStorage.getItem('vueuse-color-scheme') || 'auto'
-      if (theme === 'dark' || (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark')
-      } else {
-        document.documentElement.classList.remove('dark')
-      }
-    </script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title inertia>
+    AdonisJS
+  </title>
 
-  <body>
-     @inertia({ class: 'isolate' })
-  </body>
+  @vite(['inertia/app.ts'])
+  @inertiaHead()
+  @stack('dumper')
+  <script>
+    const theme = localStorage.getItem('vueuse-color-scheme') || 'auto'
+    if (theme === 'dark' || (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  </script>
+</head>
+
+<body>
+  <div id="splash-screen"
+    class="fixed inset-0 z-9999 flex flex-col items-center justify-center transition-opacity duration-500 ease-in-out opacity-100">
+    <span class="i-lucide-loader-pinwheel w-12 h-12 animate-spin text-primary"></span>
+
+    <p class="mt-4 font-medium animate-pulse">
+      Chargement...
+    </p>
+  </div>
+  @inertia({ class: 'isolate' })
+</body>
 
 </html>

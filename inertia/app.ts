@@ -24,6 +24,16 @@ createInertiaApp({
       .use(plugin)
       .use(ui)
       .mount(el)
+
+    const splash = document.getElementById('splash-screen')
+    if (splash) {
+      splash.classList.remove('opacity-100')
+      splash.classList.add('opacity-0')
+
+      setTimeout(() => {
+        splash.remove()
+      }, 500)
+    }
   },
   progress: {
     color: '#4B5563',
