@@ -4,6 +4,7 @@ import { Link, usePage } from '@inertiajs/vue3';
 import { NavigationMenuItem } from '@nuxt/ui/runtime/components/NavigationMenu.d.vue.js';
 
 import { ref, watch } from 'vue';
+import Logo from '~/components/Logo.vue';
 
 const page = usePage<Data.SharedProps>()
 
@@ -46,6 +47,7 @@ watch(
   <UApp>
     <UHeader mode="drawer">
       <template #left>
+        <Logo class="w-auto h-18 shrink-0" />
         <Link href="/">
           <h1 class="text-3xl font-extrabold uppercase">
             Vot'Asso
