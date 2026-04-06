@@ -1,2 +1,25 @@
+@import url(https://fonts.bunny.net/css?family=public-sans:300|space-grotesk:400);
+
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+
+@theme static {
+  --font-sans: "Public Sans", sans-serif;
+  --font-title: "Space Grotesk";
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-title);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  ::selection {
+    background-color: var(--ui-primary);
+    color: var(--ui-bg-muted);
+  }
+}
