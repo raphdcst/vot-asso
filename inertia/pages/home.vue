@@ -1,22 +1,32 @@
+<script lang="ts" setup>
+
+const mainDescription = "VOT'ASSO a été conçu afin de permettre aux adhérents d'association de proposer et voter leurs projets solidaires."
+
+const footerDescription = `
+L'ACLE, ou Association des Carabins de Lyon Est, est une association étudiante soucieuse de respecter la volonté de ses adhérents.
+C'est pourquoi nous mettons tout en place pour leur permettre d'être la voix principale de l'asso.
+`
+
+</script>
+
 <template>
   <UContainer>
-    <UPageHero title="Parce c'est aussi VOTRE asso."
-      description="VOT'ASSO a été conçu afin de permettre aux adhérents de l'ACLE de proposer et voter leurs projets solidaires"
-      :ui="{
-        container: 'lg:py-20'
-      }" :links="[
+    <UPageHero title="Parce c'est aussi VOTRE asso." :description="mainDescription" :ui="{
+      container: 'lg:py-20'
+    }" :links="[
         {
           label: 'Proposer un projet',
           to: '/create',
           target: '_blank',
-          trailingIcon: 'i-lucide-arrow-right',
-          size: 'xl'
+          icon: 'i-lucide-circle-plus',
+          size: 'xl',
+          variant: 'soft'
         },
         {
           label: 'Voir les projets',
           to: '/projects',
           target: '_blank',
-          icon: 'i-lucide-layers',
+          icon: 'i-lucide-arrow-right',
           size: 'xl',
           color: 'neutral',
           variant: 'subtle'
@@ -44,32 +54,31 @@
       }
     ]" />
 
-    <UPageCTA title="Envie d'en savoir plus ?" description="N'hésitez pas à consulter nos réseaux !" variant="subtle"
-      :links="[
-        {
-          label: 'ACLE',
-          to: 'https://www.facebook.com/acle.lyonest',
-          target: '_blank',
-          trailingIcon: 'i-simple-icons:facebook',
-          color: 'neutral',
-          variant: 'outline'
-        },
-        {
-          label: 'ACLE ISS',
-          to: 'https://www.facebook.com/acle.sgs.lyonest',
-          target: '_blank',
-          trailingIcon: 'i-simple-icons:facebook',
-          color: 'neutral',
-          variant: 'outline'
-        },
-        {
-          label: '@leo_acle',
-          to: 'https://www.instagram.com/leo_acle/',
-          target: '_blank',
-          icon: 'i-simple-icons:instagram',
-          color: 'neutral',
-          variant: 'outline'
-        }
-      ]" />
+    <UPageCTA title="Cette app a été conçue par l'ACLE." :description="footerDescription" variant="subtle" :links="[
+      {
+        label: 'ACLE',
+        to: 'https://www.facebook.com/acle.lyonest',
+        target: '_blank',
+        trailingIcon: 'i-simple-icons:facebook',
+        color: 'neutral',
+        variant: 'outline'
+      },
+      {
+        label: 'ACLE ISS',
+        to: 'https://www.facebook.com/acle.sgs.lyonest',
+        target: '_blank',
+        trailingIcon: 'i-simple-icons:facebook',
+        color: 'neutral',
+        variant: 'outline'
+      },
+      {
+        label: '@leo_acle',
+        to: 'https://www.instagram.com/leo_acle/',
+        target: '_blank',
+        icon: 'i-simple-icons:instagram',
+        color: 'neutral',
+        variant: 'outline'
+      }
+    ]" />
   </UContainer>
 </template>
