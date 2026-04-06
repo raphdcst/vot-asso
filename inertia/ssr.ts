@@ -10,6 +10,7 @@ import { client } from '~/client'
 import Layout from '~/layouts/default.vue'
 
 export default function render(page: any) {
+  // TODO: add template-based title
   const head = createHead()
 
   return createInertiaApp({

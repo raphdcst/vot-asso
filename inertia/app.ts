@@ -8,10 +8,10 @@ import { client } from '~/client'
 import Layout from '~/layouts/default.vue'
 import './css/app.css'
 
-const appName = import.meta.env.VITE_APP_NAME || 'AdonisJS'
+const appName = import.meta.env.PUBLIC_APP_NAME
 
 createInertiaApp({
-  title: (title) => (title ? `${title} - ${appName}` : appName),
+  title: (title) => (title ? title.replace('%s', appName) : appName),
   resolve: (name) => {
     return resolvePageComponent(
       `./pages/${name}.vue`,

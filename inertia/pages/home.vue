@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { Head } from '@inertiajs/vue3';
 
 const mainDescription = "VOT'ASSO a été conçu afin de permettre aux adhérents d'association de proposer et voter leurs projets solidaires."
 
@@ -10,28 +11,31 @@ C'est pourquoi nous mettons tout en place pour leur permettre d'être la voix pr
 </script>
 
 <template>
+
+  <Head title="%s - Parce que c'est aussi votre asso." />
+
   <UContainer>
     <UPageHero title="Parce c'est aussi VOTRE asso." :description="mainDescription" :ui="{
       container: 'lg:py-20'
     }" :links="[
-        {
-          label: 'Proposer un projet',
-          to: '/create',
-          target: '_blank',
-          icon: 'i-lucide-circle-plus',
-          size: 'xl',
-          variant: 'soft'
-        },
-        {
-          label: 'Voir les projets',
-          to: '/projects',
-          target: '_blank',
-          icon: 'i-lucide-arrow-right',
-          size: 'xl',
-          color: 'neutral',
-          variant: 'subtle'
-        }
-      ]" />
+      {
+        label: 'Proposer un projet',
+        to: '/create',
+        target: '_blank',
+        icon: 'i-lucide-circle-plus',
+        size: 'xl',
+        variant: 'soft'
+      },
+      {
+        label: 'Voir les projets',
+        to: '/projects',
+        target: '_blank',
+        icon: 'i-lucide-arrow-right',
+        size: 'xl',
+        color: 'neutral',
+        variant: 'subtle'
+      }
+    ]" />
 
     <UPageSection id="features" title="Une app conçue par des votants, pour des votants" :features="[
       {
