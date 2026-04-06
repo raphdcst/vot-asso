@@ -46,7 +46,7 @@ watch(
   <UApp>
     <UHeader mode="drawer">
       <template #left>
-        <Link to="/">
+        <Link href="/">
           <h1 class="text-3xl font-extrabold uppercase">
             Vot'Asso
           </h1>
