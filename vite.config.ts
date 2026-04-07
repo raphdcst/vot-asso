@@ -34,4 +34,6 @@ export default defineConfig({
       ignored: ['**/storage/**', '**/tmp/**'],
     },
   },
+
+  assetsInclude: ['public/assets/**'],
 })
