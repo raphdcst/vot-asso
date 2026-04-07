@@ -13,6 +13,7 @@ import router from '@adonisjs/core/services/router'
 
 router.on('/').renderInertia('home', {}).as('home')
 router.on('/how-to').renderInertia('how-to', {}).as('how-to')
+router.get('/initiatives', [controllers.Initiatives, 'index'])
 
 router
   .group(() => {

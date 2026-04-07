@@ -18,6 +18,12 @@ const routes = {
     tokens: [{"old":"/how-to","type":0,"val":"how-to","end":""}],
     types: placeholder as Registry['how-to']['types'],
   },
+  'initiatives.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/initiatives',
+    tokens: [{"old":"/initiatives","type":0,"val":"initiatives","end":""}],
+    types: placeholder as Registry['initiatives.index']['types'],
+  },
   'new_account.create': {
     methods: ["GET","HEAD"],
     pattern: '/signup',
