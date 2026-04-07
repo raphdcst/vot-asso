@@ -16,7 +16,6 @@ C'est pourquoi nous mettons tout en place pour leur permettre d'être la voix pr
 
   <Head title="%s - Parce que c'est aussi votre asso." />
 
-  <UContainer>
     <UPageHero title="Parce c'est aussi VOTRE asso." :description="mainDescription" :ui="{
       container: 'py-10 sm:py-20 lg:py-26'
     }" :links="[
@@ -92,5 +91,4 @@ C'est pourquoi nous mettons tout en place pour leur permettre d'être la voix pr
         variant: 'outline'
       }
     ]" />
-  </UContainer>
 </template>

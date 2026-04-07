@@ -68,7 +68,9 @@ watch(
     </UHeader>
 
     <UMain>
-      <slot />
+      <UContainer>
+        <slot />
+      </UContainer>
     </UMain>
 
     <USeparator class="mt-8" />
