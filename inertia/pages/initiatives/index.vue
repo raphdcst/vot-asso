@@ -76,6 +76,7 @@ const sortedInitiatives = computed(() => {
           </template>
 
           <div class="w-full flex flex-col space-y-3">
+            <USelect v-model="filterValue" :items="filterOptions" />
           </div>
         </UCard>
       </div>
