@@ -1,8 +1,19 @@
 <script setup lang="ts">
 import { type Data } from '@generated/data';
+import { router } from '@inertiajs/vue3';
 import { computed, ref } from "vue";
 
-const props = defineProps<{ initiatives: Data.Initiative[] }>();
+const props = defineProps<{
+  initiatives: {
+    data: Data.Initiative[], metadata: {
+      total: number
+      perPage: number
+      currentPage: number
+      lastPage: number
+      firstPage: number
+    }
+  }
+}>();
 
 type SortType = 'newest' | 'oldest' | 'alphabetical';
 
@@ -19,8 +30,50 @@ const sortOptions: SortOption[] = [
 
 const sortValue = ref<SortType>('newest');
 
-const sortedInitiatives = computed(() => {
-  return [...props.initiatives].sort((a, b) => {
+type FilterType = 'all' | 'month' | 'week' | 'day';
+
+type FilterOption = {
+  label: string;
+  value: FilterType;
+};
+
+const filterOptions: FilterOption[] = [
+  { label: 'Depuis le début', value: 'all' },
+  { label: 'Moins d\'un mois', value: 'month' },
+  { label: 'Moins d\'une semaine', value: 'week' },
+  { label: 'Moins d\'un jour', value: 'day' },
+];
+
+const filterValue = ref<FilterType>('all');
+
+const onPageChange = (page: number) => {
+  router.get('/initiatives', { page }, {
+    preserveState: true,
+    preserveScroll: true,
+  });
+};
+
+const processedInitiatives = computed(() => {
+  let filtered = [...props.initiatives.data];
+
+  if (filterValue.value !== 'all') {
+    const cutoff = new Date();
+    if (filterValue.value === 'month') {
+      cutoff.setMonth(cutoff.getMonth() - 1);
+    } else if (filterValue.value === 'week') {
+      cutoff.setDate(cutoff.getDate() - 7);
+    } else if (filterValue.value === 'day') {
+      cutoff.setDate(cutoff.getDate() - 1);
+    }
+
+    filtered = filtered.filter(initiative => {
+      if (!initiative.createdAt) return false;
+      return new Date(initiative.createdAt) >= cutoff;
+    });
+  }
+
+
+  return filtered.sort((a, b) => {
 
     if (sortValue.value === 'newest') {
       const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
@@ -49,7 +102,7 @@ const sortedInitiatives = computed(() => {
 <template>
   <UPageHeader title="Initiatives en cours de vote" />
 
-  <UPageHero v-if="initiatives.length === 0" title="Aucune initiatives en cours de vote." :links="[{
+  <UPageHero v-if="initiatives.data.length === 0" title="Aucune initiative en cours de vote." :links="[{
     label: 'Proposer une initiative',
     to: '/create',
     icon: 'i-lucide-circle-plus',
@@ -60,7 +113,7 @@ const sortedInitiatives = computed(() => {
   <UPage v-else>
 
     <template #left>
-      <div class="max-h-min flex flex-col space-y-3 items-center justify-center mt-8">
+      <div class="max-h-min flex gap-2 lg:gap-0 lg:flex-col lg:space-y-3 items-center justify-center mt-8">
         <UCard variant="subtle" class="w-full">
           <template #header>
             <h2>Trier</h2>
@@ -83,11 +136,19 @@ const sortedInitiatives = computed(() => {
     </template>
 
     <UPageBody>
-      <UBlogPosts>
-        <UBlogPost v-for="initiative in sortedInitiatives" :key="initiative.id" v-bind="initiative" variant="subtle"
+      <div v-if="processedInitiatives.length === 0" class="flex-1 flex items-center justify-center">
+        <h3>Aucune initiative ne correspond à vos filtres.</h3>
+      </div>
+      <UBlogPosts orientation="vertical" v-else>
+        <UBlogPost v-for="initiative in processedInitiatives" :key="initiative.id" v-bind="initiative" variant="subtle"
           :title="initiative.name" :description="initiative.description" :date="initiative.createdAt ?? undefined"
           :authors="[{ name: initiative.user.fullName ?? undefined, description: initiative.user.email, avatar: { text: initiative.user.initials, ui: { root: 'ring ring-2 ring-primary/80' } } }]" />
       </UBlogPosts>
+
+      <div v-if="initiatives.metadata.total > initiatives.metadata.perPage" class="mt-8 flex justify-center">
+        <UPagination :page="initiatives.metadata.currentPage" :items-per-page="initiatives.metadata.perPage"
+          :total="initiatives.metadata.total" @update:page="onPageChange" />
+      </div>
     </UPageBody>
   </UPage>
 </template>
