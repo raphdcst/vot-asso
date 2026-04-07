@@ -19,24 +19,22 @@ C'est pourquoi nous mettons tout en place pour leur permettre d'être la voix pr
   <UPageHero title="Parce c'est aussi VOTRE asso." :description="mainDescription" :ui="{
     container: 'py-10 sm:py-20 lg:py-26'
   }" :links="[
-      {
-        label: 'Proposer un projet',
-        to: '/create',
-        target: '_blank',
-        icon: 'i-lucide-circle-plus',
-        size: 'xl',
-        variant: 'soft'
-      },
-      {
-        label: 'Voir les projets',
-        to: '/initiatives',
-        target: '_blank',
-        icon: 'i-lucide-arrow-right',
-        size: 'xl',
-        color: 'neutral',
-        variant: 'subtle'
-      }
-    ]" />
+    {
+      label: 'Proposer un projet',
+      to: '/create',
+      icon: 'i-lucide-circle-plus',
+      size: 'xl',
+      variant: 'soft'
+    },
+    {
+      label: 'Voir les projets',
+      to: '/initiatives',
+      icon: 'i-lucide-arrow-right',
+      size: 'xl',
+      color: 'neutral',
+      variant: 'subtle'
+    }
+  ]" />
 
   <USeparator class="w-full" />
 
