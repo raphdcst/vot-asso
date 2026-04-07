@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: GeLlKLVwgiN24ylpYG1x
+    ports:
+      - "5432:5432"
+
+  dashboard:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
