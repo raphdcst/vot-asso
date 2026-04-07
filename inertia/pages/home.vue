@@ -3,7 +3,7 @@ import { Head } from '@inertiajs/vue3';
 import Logo from '~/components/Logo.vue';
 
 
-const mainDescription = "VOT'ASSO a été conçu afin de permettre aux adhérents d'association de proposer et voter leurs projets solidaires."
+const mainDescription = "VOT'ASSO a été conçu afin de permettre aux adhérents d'association de proposer et voter leurs initiatives solidaires."
 
 const footerDescription = `
 L'ACLE, ou Association des Carabins de Lyon Est, est une association étudiante soucieuse de respecter la volonté de ses adhérents.
@@ -20,14 +20,14 @@ C'est pourquoi nous mettons tout en place pour leur permettre d'être la voix pr
     container: 'py-10 sm:py-20 lg:py-26'
   }" :links="[
     {
-      label: 'Proposer un projet',
+      label: 'Proposer une initiative',
       to: '/create',
       icon: 'i-lucide-circle-plus',
       size: 'xl',
       variant: 'soft'
     },
     {
-      label: 'Voir les projets',
+      label: 'Voir les initiatives',
       to: '/initiatives',
       icon: 'i-lucide-arrow-right',
       size: 'xl',
@@ -46,7 +46,7 @@ C'est pourquoi nous mettons tout en place pour leur permettre d'être la voix pr
           icon: 'i-lucide-circle-check',
           title: 'Simple à utiliser',
           description:
-            'Pas de configuration nécessaire. Connectez-vous et commencez à consulter les projets de la communauté.'
+            'Pas de configuration nécessaire. Connectez-vous et commencez à consulter les initiatives de la communauté.'
         },
         {
           icon: 'i-lucide-lectern',
