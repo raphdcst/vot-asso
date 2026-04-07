@@ -1,4 +1,4 @@
-import { InitiativeFactory } from '#database/factories/initiative_factory'
+import { InitiativeFactory } from '#database/factories/1_initiative_factory'
 import User from '#models/user'
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
 
