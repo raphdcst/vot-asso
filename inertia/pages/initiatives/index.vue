@@ -48,7 +48,16 @@ const sortedInitiatives = computed(() => {
 
 <template>
   <UPageHeader title="Initiatives en cours de vote" />
-  <UPage>
+
+  <UPageHero v-if="initiatives.length === 0" title="Aucune initiatives en cours de vote." :links="[{
+    label: 'Proposer une initiative',
+    to: '/create',
+    icon: 'i-lucide-circle-plus',
+    size: 'xl',
+    variant: 'soft'
+  }]" />
+
+  <UPage v-else>
 
     <template #left>
       <div class="max-h-min flex flex-col space-y-3 items-center justify-center mt-8">
