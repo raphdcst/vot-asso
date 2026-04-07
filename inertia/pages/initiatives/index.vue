@@ -2,6 +2,7 @@
 import { type Data } from '@generated/data';
 import { router } from '@inertiajs/vue3';
 import { computed, ref } from "vue";
+import InitiativeCard from '~/components/InitiativeCard.vue';
 
 const props = defineProps<{
   initiatives: {
@@ -139,11 +140,9 @@ const processedInitiatives = computed(() => {
       <div v-if="processedInitiatives.length === 0" class="flex-1 flex items-center justify-center">
         <h3>Aucune initiative ne correspond à vos filtres.</h3>
       </div>
-      <UBlogPosts orientation="vertical" v-else>
-        <UBlogPost v-for="initiative in processedInitiatives" :key="initiative.id" v-bind="initiative" variant="subtle"
-          :title="initiative.name" :description="initiative.description" :date="initiative.createdAt ?? undefined"
-          :authors="[{ name: initiative.user.fullName ?? undefined, description: initiative.user.email, avatar: { text: initiative.user.initials, ui: { root: 'ring ring-2 ring-primary/80' } } }]" />
-      </UBlogPosts>
+      <div v-else class="grid md:grid-cols-2 gap-5 place-items-center">
+        <InitiativeCard v-for="initiative in processedInitiatives" :initiative="initiative" />
+      </div>
 
       <div v-if="initiatives.metadata.total > initiatives.metadata.perPage" class="mt-8 flex justify-center">
         <UPagination :page="initiatives.metadata.currentPage" :items-per-page="initiatives.metadata.perPage"
