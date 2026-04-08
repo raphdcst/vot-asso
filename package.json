@@ -68,6 +68,8 @@
     "@adonisjs/shield": "^9.0.0",
     "@adonisjs/static": "^2.0.1",
     "@adonisjs/vite": "^5.1.0",
+    "@fontsource/public-sans": "^5.2.7",
+    "@fontsource/space-grotesk": "^5.2.10",
     "@inertiajs/vue3": "^2.3.18",
     "@nuxt/ui": "^4.6.1",
     "@tuyau/core": "^1.2.2",
