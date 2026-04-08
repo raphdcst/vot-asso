@@ -1,5 +1,7 @@
 import { resolvePageComponent } from '@adonisjs/inertia/helpers'
 import { TuyauProvider } from '@adonisjs/inertia/vue'
+import '@fontsource/public-sans/300.css'
+import '@fontsource/space-grotesk/400.css'
 import { createInertiaApp } from '@inertiajs/vue3'
 import ui from '@nuxt/ui/vue-plugin'
 import { createApp, type DefineComponent, h } from 'vue'
