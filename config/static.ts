@@ -27,6 +27,21 @@ const staticServerConfig = defineConfig({
    * Policy for files starting with a dot.
    */
   dotFiles: 'ignore',
+
+  /**
+   * Enable caching for assets
+   */
+  headers: (path) => {
+    if (path.startsWith('assets/')) {
+      return {
+        'Cache-Control': 'public, max-age=31536000, immutable',
+      }
+    }
+
+    return {
+      'Cache-Control': 'public, max-age=3600',
+    }
+  },
 })
 
 export default staticServerConfig
