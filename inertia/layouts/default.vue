@@ -53,7 +53,7 @@ watch(
             Vot'Asso
           </h1>
         </Link>
-        <UBadge color="primary" variant="outline">
+        <UBadge class="hidden sm:inline" color="primary" variant="outline">
           by <span class="font-bold">ACLE</span>
         </UBadge>
       </template>
