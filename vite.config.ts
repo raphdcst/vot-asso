@@ -21,7 +21,6 @@ export default defineConfig({
       },
     }),
   ],
-
   resolve: {
     alias: {
       '~/': `${import.meta.dirname}/inertia/`,
@@ -36,4 +35,16 @@ export default defineConfig({
   },
 
   assetsInclude: ['public/assets/**'],
+
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return 'vendor'
+          }
+        },
+      },
+    },
+  },
 })
